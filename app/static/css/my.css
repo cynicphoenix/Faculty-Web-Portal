@@ -1,0 +1,9 @@
+.my-intro-header {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    text-align: center;
+    color: #f8f8f8;
+    background: url(../img/pic.jpg) no-repeat center center;
+    background-size: cover;
+    height: 100%;
+}
