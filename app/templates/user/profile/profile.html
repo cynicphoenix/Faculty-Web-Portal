@@ -1,0 +1,319 @@
+{% extends "base.html" %}
+{% block title %}Abhinav Dhall{% endblock %}
+{% block body %}
+	<div id="colorlib-page">
+		<div class="container-wrap">
+		<a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><i></i></a>
+		<aside id="colorlib-aside" role="complementary" class="border js-fullheight">
+			<div class="text-center">
+				<div class="author-img" style="background-image: url(/static/img/about.png);"></div>
+				<h1 id="colorlib-logo"><a>{{first_name}} {{last_name}}</a></h1>
+				<span class="position">{{department_id}}</span>
+			</div>
+			<nav id="colorlib-main-menu" role="navigation" class="navbar">
+				<div id="navbar" class="collapse">
+					<ul>
+						<li><a href="#" data-nav-section="about">About Me!</a></li>
+						<li><a href="#" data-nav-section="interests">Interests</a></li>
+						<li><a href="#" data-nav-section="edu_work">Education/Experience</a></li>
+						<li><a href="#" data-nav-section="publications">Publications</a></li>
+						<li><a href="#" data-nav-section="projects">Projects</a></li>
+						<li><a href="#" data-nav-section="awards">Awards</a></li>
+					</ul>
+				</div>
+			</nav>
+		</aside>
+
+		<div id="colorlib-main">
+			<!-- Biography -->
+			<section class="colorlib-about" data-section="about">
+				<div class="colorlib-narrow-content">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="row row-bottom-padded-sm animate-box" data-animate-effect="fadeInLeft">
+								<div class="col-md-12">
+									<div class="about-desc">
+										<span class="heading-meta">About Me!</span>
+										<h2 class="colorlib-heading">{{first_name}} {{last_name}}</h2>
+										<span class="heading-meta">Department : {{department_id}}</span>
+										<span class="heading-meta">Email Id : {{email_id}}</span>
+										<p><br></p>
+										{% if biography %}
+										<p>{{biography}}</p>
+										{% endif %}
+											<!-- Add email-id and department -->
+									</div>
+								</div>
+							</div>
+							<a href="{{ url_for('user.edit_details') }}" class="btn btn-default btn-lg">
+									<i class="fa fa-plus"></i>
+									Edit Details
+							</a>
+						</div>
+					</div>
+				</div>
+			</section>
+ 
+			<!-- Interests -->
+			<section class="colorlib-services" data-section="interests">
+				<div class="colorlib-narrow-content">
+					<div class="row">
+						<div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
+							<span class="heading-meta">Interests!</span>
+							<h2 class="colorlib-heading">Current Research Interests</h2>
+						</div>
+					</div>
+
+					{% for ri in research_interests %}
+					<div class="row row-pt-md">
+						<div class="col-md-4 text-center animate-box">
+							<div class="services color-1">
+								<span class="icon">
+									<i class="icon-data"></i>
+								</span>
+								<div class="desc">
+									<p>{{ri}}</p>
+									<a href="{{ url_for('user.delete', id = 'research_interests', data = ri) }}">
+											<i class="fa fa-trash"></i> Delete 
+										  </a>
+
+								</div>
+							</div>
+						</div>
+					</div>
+					{% endfor %}
+				
+				<a href="{{ url_for('user.add_research_interest') }}" class="btn btn-default btn-lg">
+						<i class="fa fa-plus"></i>
+						Add Research Interest
+				</a>
+				
+			</div>
+			</section>
+			
+			<div id="colorlib-counter" class="colorlib-counters" style="background-image: url(/static/img/cover_bg_1.jpg);" data-stellar-background-ratio="0.5">
+				<div class="overlay"></div>
+				<div class="colorlib-narrow-content">
+					<div class="row">
+					</div>
+					<div class="row">
+
+						{% if no_projects > 0 %}
+						<div class="col-md-3 text-center animate-box">
+							<span class="colorlib-counter js-counter" data-from="0" data-to={{no_projects}} data-speed="5000" data-refresh-interval="50"></span>
+							<span class="colorlib-counter-label">Projects</span>
+						</div>
+						{% endif %}
+
+						{% if no_publications > 0 %}
+						<div class="col-md-3 text-center animate-box">
+							<span class="colorlib-counter js-counter" data-from="0" data-to={{no_publications}} data-speed="5000" data-refresh-interval="50"></span>
+							<span class="colorlib-counter-label">Publications</span>
+						</div>
+						{% endif %}
+
+						{% if no_researchs > 0 %}
+						<div class="col-md-3 text-center animate-box">
+							<span class="colorlib-counter js-counter" data-from="0" data-to={{no_researchs}} data-speed="5000" data-refresh-interval="50"></span>
+							<span class="colorlib-counter-label">Research Output</span>
+						</div>
+						{% endif %}
+
+						{% if no_awards > 0 %}
+						<div class="col-md-3 text-center animate-box">
+							<span class="colorlib-counter js-counter" data-from="0" data-to={{no_awards}} data-speed="5000" data-refresh-interval="50"></span>
+							<span class="colorlib-counter-label">Awards</span>
+						</div>
+						{% endif %}
+					</div>
+				</div>
+			</div>
+
+
+			<!-- Education/Experience -->
+			<section class="colorlib-education" data-section="edu_work">
+				<div class="colorlib-narrow-content">
+					<div class="row">
+						<div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
+							<span class="heading-meta">Education/Experience</span>
+							<h2 class="colorlib-heading animate-box"> &nbsp; Education</h2>
+						</div>
+					</div>
+
+					<!-- Education Section -->
+					<div class="row">
+						<div class="col-md-12 animate-box" data-animate-effect="fadeInLeft">
+							<div class="fancy-collapse-panel">
+								<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+									
+									{% for ed in education %}
+									<div class="panel panel-default">
+									    <div class="panel-heading" role="tab" id="headingThree">
+									        <h4 class="panel-title">
+									            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">{{ ed }}
+														<a href="{{ url_for('user.delete', id = 'education', data = ed) }}">
+																<i class="fa fa-trash"></i> Delete 
+															  </a>
+												</a>
+									        </h4>
+									    </div>
+									</div>
+									{% endfor %}
+								</div>
+								<a href="{{ url_for('user.add_education') }}" class="btn btn-default btn-lg">
+										<i class="fa fa-plus"></i>
+										Add Education
+							</a>
+							</div>
+						</div>
+					</div>
+
+					<!-- Experience -->
+					<p> <br></p> <p> <br></p>
+					<div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
+							<h2 class="colorlib-heading animate-box">&nbsp;Experience</h2>
+					</div>
+
+					<div class="row">
+						<div class="col-md-12 animate-box" data-animate-effect="fadeInLeft">
+							<div class="fancy-collapse-panel">
+								<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+									
+									{% for ex in experience %}
+									<div class="panel panel-default">
+										<div class="panel-heading" role="tab" id="headingThree">
+											<h4 class="panel-title">
+												<a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">{{ ex }}
+														<a href="{{ url_for('user.delete', id = 'experience', data = ex) }}">
+																<i class="fa fa-trash"></i> Delete 
+															  </a>
+												</a>
+											</h4>
+										</div>
+									</div>
+									{% endfor %}
+								</div>
+								<a href="{{ url_for('user.add_experience') }}" class="btn btn-default btn-lg">
+										<i class="fa fa-plus"></i>
+										Add Experence
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+
+			<!-- Publications -->
+			<section class="colorlib-blog" data-section="publications">
+				<div class="colorlib-narrow-content">
+					<div class="row">
+						<div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
+							<span class="heading-meta">Publications</span>
+							<h2 class="colorlib-heading">My Publications</h2>
+						</div>
+					</div>
+					<div class="row">
+
+						{% for pu in publications %}
+						<div class="col-md-4 col-sm-6 animate-box" data-animate-effect="fadeInRight">
+							<div class="blog-entry">
+								<div class="desc">
+									<h3><a> {{ pu }}</a></h3><a href="{{ url_for('user.delete', id = 'publications', data = pu) }}">
+											<i class="fa fa-trash"></i> Delete 
+										  </a>
+								</div>
+							</div>
+						</div>
+						{% endfor %}
+					</div>
+								<a href="{{ url_for('user.add_publication') }}" class="btn btn-default btn-lg">
+										<i class="fa fa-plus"></i>
+										Add Publication
+								</a>
+
+					
+				</div>
+			</section>
+
+			<section class="colorlib-blog" data-section="projects">
+					<div class="colorlib-narrow-content">
+						<div class="row">
+							<div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
+								<span class="heading-meta">Projects</span>
+								<h2 class="colorlib-heading">My Projects</h2>
+							</div>
+						</div>
+						<div class="row">
+	
+							{% for pr in projects %}
+							<div class="col-md-4 col-sm-6 animate-box" data-animate-effect="fadeInRight">
+								<div class="blog-entry">
+									<div class="desc">
+										<h3 ><a> {{ pr }}</a></h3><a href="{{ url_for('user.delete', id = 'projects', data = pr) }}">
+												<i class="fa fa-trash"></i> Delete
+											  </a>
+									</div>
+								</div>
+							</div>
+							{% endfor %}
+						</div>
+									<a href="{{ url_for('user.add_project') }}" class="btn btn-default btn-lg">
+											<i class="fa fa-plus"></i>
+											Add Project
+									</a>
+	
+						
+					</div>
+				</section>
+
+			<!-- Awards -->
+			<section class="colorlib-experience" data-section="awards">
+				<div class="colorlib-narrow-content">
+					<div class="row">
+						<div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
+							<span class="heading-meta">Awards</span>
+							<h2 class="colorlib-heading animate-box">My Prizes</h2>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="timeline-centered">
+
+							{% for aw in awards %}
+								<article class="timeline-entry animate-box" data-animate-effect="fadeInLeft">
+								<div class="timeline-entry-inner">
+									<div class="timeline-icon color-1">
+										<i class="icon-pen2"></i>
+									</div>
+									<div class="timeline-label">
+										<p><a>{{ aw }}</p><a href="{{ url_for('user.delete', id = 'awards', data = aw) }}">
+												<i class="fa fa-trash"></i> Delete 
+											  </a>
+									</div>
+								</div>
+								</article>
+								{% endfor %}
+
+								<article class="timeline-entry begin animate-box" data-animate-effect="fadeInBottom">
+									<div class="timeline-entry-inner">
+										<div class="timeline-icon color-none">
+										</div>
+									</div>
+								</article>
+							</div>
+								
+										<a href="{{ url_for('user.add_award') }}" class="btn btn-default btn-lg">
+												<i class="fa fa-plus"></i>
+												Add Award
+										</a>
+										
+							
+						</div>
+					</div>
+				</div>
+			</section>
+		</div><!-- end:colorlib-main -->
+	</div><!-- end:container-wrap -->
+{% endblock %}
+

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% import "bootstrap/utils.html" as utils %}
+{% block title %}Home{% endblock %}
+{% block body %}
+<div id="main">
+    <div class="my-intro-header">
+            
+        <div class="container"><br/>
+            {{ utils.flashed_messages() }}
+            
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="intro-message">
+                            
+                        <h1>Admin Dashoard</h1>
+                        <hr class="intro-divider">
+                        <h3>Indian Institute of Technology, Ropar</h3>
+                        <hr class="intro-divider">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

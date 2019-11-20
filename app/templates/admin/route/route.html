@@ -1,0 +1,56 @@
+{% import "bootstrap/utils.html" as utils %}
+{% extends "base.html" %}
+{% block title %}Routes{% endblock %}
+{% block body %}
+<div class="content-section">
+  <div class="outer">
+    <div class="middle">
+      <div class="inner">
+        <br/>
+        {{ utils.flashed_messages() }}
+        <br/>
+        <h1 style="text-align:center;">Routes</h1>
+        {% if routes %}
+          <hr class="intro-divider">
+          <div class="center">
+            <table class="table table-striped table-bordered">
+              <thead>
+                <tr>
+                  <th width="20%"> Role </th>
+                  <th width="20%"> From </th>
+                  <th width="20%"> To</th>
+                  <th width="15%"> Delete</th>
+                </tr>
+              </thead>
+              <tbody>
+              {% for route in routes %}
+                <tr>
+                  <td> {{ route[0] }} </td>
+                  <td> {{ route[1] }} </td>
+                  <td> {{ route[2] }} </td>
+                  <td>
+                    <a href="{{ url_for('admin.delete_route', role = route[0], start_route = route[1]) }}">
+                      <i class="fa fa-trash"></i> Delete 
+                    </a>
+                  </td>
+                </tr>
+              {% endfor %}
+              </tbody>
+            </table>
+          </div>
+          <div style="text-align: center">
+        {% else %}
+          <div style="text-align: center">
+            <h3> No Routes have been added. </h3>
+            <hr class="intro-divider">
+        {% endif %}
+          <a href="{{ url_for('admin.add_route') }}" class="btn btn-default btn-lg">
+            <i class="fa fa-plus"></i>
+            Add Route
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

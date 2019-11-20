@@ -1,0 +1,23 @@
+{% extends "base.html" %}{% import "bootstrap/utils.html" as utils %}
+{% block title %}Page Not Found{% endblock %}
+{% block body %}
+<div class="content-section">
+  <div class="outer">
+    <div class="middle">
+      <div class="inner"><br/>
+        {{ utils.flashed_messages() }}
+        <br/><div class = "my-intro-header">
+        <div style="text-align: center">
+            <h1> Error Occured!</h1>
+            <h3> Invalid Request was performed! </h3>
+            <hr class="intro-divider">
+            <a href="{{ url_for('home.homepage') }}" class="btn btn-default btn-lg">
+                <i class="fa fa-home"></i>
+                Home
+            </a>
+        </div>
+      </div></div>
+    </div>
+  </div>
+</div>
+{% endblock %}

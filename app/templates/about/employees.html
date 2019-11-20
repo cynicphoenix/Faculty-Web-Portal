@@ -1,0 +1,87 @@
+{% import "bootstrap/utils.html" as utils %}
+{% extends "base.html" %}
+{% block title %}Departments{% endblock %}
+{% block body %}
+<div class="content-section">
+  <div class="outer">
+    <div class="middle">
+      <div class="inner">
+        <br/>
+        {{ utils.flashed_messages() }}
+        <br/>
+        {% if employees %}
+        <h1 style="text-align:center;">Cross Cutting Faculties and HOD</h1>
+          <hr class="intro-divider">
+          <div class="center">
+            <table class="table table-striped table-bordered">
+              <thead>
+                <tr>
+                        <th width="15%"> Employee-ID </th>
+                        <th width="10%"> Role</th>
+                  <th width="18%"> First Name </th>
+                  <th width="18%"> Last Name </th>
+                  <th width="10%"> Dep-ID </th>
+                </tr>
+              </thead>
+              <tbody>
+              {% for employee in employees %}
+              {% if employee[7] != 'FACULTY' %}
+                <tr>
+                        
+                  <td> <a href="{{ url_for('about.about', user = employee[0]) }}">{{ employee[0] }} </a></td>
+                  <td> {{ employee[7] }} </td>
+                <td> {{ employee[2] }} </td>
+                <td> {{ employee[3] }} </td>
+                  <td> {{ employee[5] }} </td>
+                  
+                </tr>
+              {% endif %}
+              {% endfor %}
+              </tbody>
+            </table>
+            <p><br><br><br></p>
+
+            <h1 style="text-align:center;">Faculties</h1>
+
+            <hr class="intro-divider">
+            {% for d in departments %}
+            <h1 style="text-align:center;">{{ d[1] }}</h1>
+          <hr class="intro-divider">
+          <!-- <div class="center"> -->
+            <table class="table table-striped table-bordered">
+              <thead>
+                <tr>
+                <th width="15%"> Employee-ID </th>
+                  <th width="18%"> First Name </th>
+                  <th width="18%"> Last Name </th>
+                </tr>
+              </thead>
+              <tbody>
+              {% for employee in employees %}
+              {% if employee[5] == d[0] %}
+                <tr>
+                        
+                  <td> <a href="{{ url_for('about.about', user = employee[0]) }}">{{ employee[0] }}</a> </td>
+                <td> {{ employee[2] }} </td>
+                <td> {{ employee[3] }} </td>
+                </a>
+                </tr>
+              {% endif %}
+              {% endfor %}
+              </tbody>
+            </table>
+        <p><br><br></p>
+      {% endfor %}
+        </div>
+        </div>
+        <div style="text-align: center">
+                {% else %}
+                  <div style="text-align: center">
+                    <h3> No employees have been added. </h3>
+                    <hr class="intro-divider">
+                {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

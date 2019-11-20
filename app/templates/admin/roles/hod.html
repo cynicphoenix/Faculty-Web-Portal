@@ -1,0 +1,65 @@
+{% import "bootstrap/utils.html" as utils %}
+{% extends "base.html" %}
+{% block title %}Roles{% endblock %}
+{% block body %}
+<div class="content-section">
+  <div class="outer">
+    <div class="middle">
+      <div class="inner">
+        <br/>
+        {{ utils.flashed_messages() }}
+        <br/>
+        <h1 style="text-align:center;">Head of Departments</h1>
+        {% if hods %}
+          <hr class="intro-divider">
+          <div class="center">
+            <table class="table table-striped table-bordered">
+              <thead>
+                <tr>
+                  <th width="20%"> Department-ID </th>
+                  <th width="20%"> Employee-ID </th>
+                  <th width="20%"> Appointed Date </th>
+                  <th width="15%"> Edit </th>
+                  <th width="15%"> Delete </th>
+                </tr>
+              </thead>
+              <tbody>
+              {% for hod in hods %}
+                <tr>
+                  <td> {{ hod[1] }} </td>
+                  <td> {{ hod[0] }} </td>
+                  <td> {{ hod[2] }} </td>
+                  <td>
+                    <a href="{{ url_for('admin.edit_hod', department_id = hod[1]) }}">
+                      <i class="fa fa-pencil"></i> Edit 
+                    </a>
+                  </td>
+                  <td>
+                    <a href="{{ url_for('admin.delete_hod', department_id = hod[1]) }}">
+                      <i class="fa fa-trash"></i> Delete 
+                    </a>
+                  </td>
+                </tr>
+              {% endfor %}
+              </tbody>
+            </table>
+          </div>
+          <div style="text-align: center">
+        {% else %}
+          <div style="text-align: center">
+            <h3> No HOD have been added. </h3>
+            <hr class="intro-divider">
+          </div>            
+        {% endif %}
+        <div style="text-align: center">
+          <a href="{{ url_for('admin.add_hod') }}" class="btn btn-default btn-lg">
+            <i class="fa fa-plus"></i>
+            Add HOD
+          </a></div>
+          <hr class="intro-divider">
+          <h4 style="text-align:center;"><a = href="{{url_for('admin.history_hod')}}">Click to view HOD history</h4>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

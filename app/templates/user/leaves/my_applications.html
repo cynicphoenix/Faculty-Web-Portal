@@ -1,0 +1,138 @@
+{% import "bootstrap/utils.html" as utils %}
+{% extends "base.html" %}
+{% block title %}Leave Requests{% endblock %}
+{% block body %}
+
+<section class="colorlib-education" data-section="education">
+    <div class="colorlib-narrow-content">
+        <div class="row">
+                <div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
+                    <span class="heading-meta">Applications</span>
+                    <h2 class="colorlib-heading animate-box">Total Leaves Left</h2>
+                            </div></div>
+        <div class="row">
+                <div class="col-md-12 animate-box" data-animate-effect="fadeInLeft">
+                                <div class="fancy-collapse-panel">
+                                    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading" role="tab" id="headingyear">
+                                                <h4 class="panel-title">
+                                                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseyear" aria-expanded="false" aria-controls="collapseyear"> Leaves Left
+                                                    </a>
+                                                </h4>
+                                            </div>
+                                            <div id="collapseyear" class="panel-collapse collapse" role="tabpanel"">
+                                                <div class="panel-body">
+                                                    <div class="center">
+                                                            <table class="table table-striped table-bordered">
+                                                                    <thead>
+                                                                        <tr>
+                                                                        <th width="40%"> Year </th>
+                                                                        <th width="60%"> Leaves Left </th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    {% for leave_left in leaves_left%}
+                                                                    <tbody>
+                                                                        <tr>
+                                                                        <td> {{ leave_left[2] }} </td>
+                                                                        <td> {{ leave_left[1] }} </td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                    {% endfor %}
+                                                                </table>
+                                                    
+                                                            </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                              </div>  
+                        </div>                        
+                    </div>
+                    <p><br><br></p>
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
+                <h2 class="colorlib-heading animate-box">My Leave Requests</h2>
+            </div>
+        </div>
+        {% if leaves %}
+        <div class="row">
+            <div class="col-md-12 animate-box" data-animate-effect="fadeInLeft">
+                <div class="fancy-collapse-panel">
+                    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                        <div class="panel panel-default">
+                            {% for leave in leaves %}
+                            <div class="panel-heading" role="tab" id="heading{{ leave[0] }}">
+                                <h4 class="panel-title">
+                                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse{{ leave[0] }}" aria-expanded="false" aria-controls="collapse{{ leave[0] }}"> Leave Id : {{leave[0]}}
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapse{{ leave[0] }}" class="panel-collapse collapse" role="tabpanel"">
+                                <div class="panel-body">
+                                    <div class="center">
+                                        <table class="table table-striped table-bordered">
+                                            <thead>
+                                                <tr>
+                                                <th width="18%"> Applied Date </th>
+                                                <th width="15%"> Leave Type </th>
+                                                <th width="15%"> Status </th>
+                                                <th width="15%"> Start Date</th>
+                                                <th width="15%"> End Date </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                <td> {{ leave[3] }} </td>
+                                                <td> {{ leave[1] }} </td>
+                                                <td> {{ leave[6] }} </td>
+                                                <td> {{ leave[4] }} </td>
+                                                <td> {{ leave[5] }} </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    <hr class="intro-divider">
+                                    <h3 class="headingThree", class = "center">Application</h3>
+                                    <p>{{ leave[7] }}</p>
+                                    </hr>
+                                    <hr class="intro-divider">
+                                    <h3 class="headingThree">Comments</h3>
+                                    <table class="table table-striped table-bordered">
+                                            <thead>
+                                                <tr>
+                                                <th width="30%"> Comment </th>
+                                                <th width="15%"> Comment By </th>
+                                                <th width="20%"> Comment Time </th>
+                                                </tr>
+                                            </thead>
+                                            {% for comment in comments %}
+                                                {% if comment[1] == leave[0] %}
+                                                    <tbody>
+                                                        <tr>
+                                                        <td> {{ comment[2] }} </td>
+                                                        <td> {{ comment[3] }} </td>
+                                                        <td> {{ comment[4] }} </td>
+                                                        </tr>
+                                                    </tbody>
+                                                {% endif %}
+                                            {% endfor %}
+                                        </table>
+                                    </hr>
+                                </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <div style="text-align: center">
+          <h3> You have filed no application! </h3>
+          <hr class="intro-divider">
+        </div>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}
