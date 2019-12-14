@@ -89,14 +89,27 @@ he/she can only read it.
 
 ## Video Demonstration
 
-**User Personalized and About Portal**
+#### User Personalized and About Portal :
 [![IMAGE ALT TEXT HERE](https://raw.githubusercontent.com/cynicphoenix/Faculty-Web-Portal/master/Screenshots/user.png)](https://www.youtube.com/watch?v=HSSV2hhaO9A)
 
-**Admin Portal**
+#### Admin Portal :
 [![IMAGE ALT TEXT HERE](https://raw.githubusercontent.com/cynicphoenix/Faculty-Web-Portal/master/Screenshots/admin.png)](https://www.youtube.com/watch?v=Un3ZG3vNMJw)
 
-**Faculty Portal and Application**
+#### Faculty Portal and Application :
 [![IMAGE ALT TEXT HERE](https://raw.githubusercontent.com/cynicphoenix/Faculty-Web-Portal/master/Screenshots/portal.png)](https://www.youtube.com/watch?v=7WlAzyHb2aw)
+
+
+## Requirements
+>Flask<br />
+>python3<br />
+>pymongo<br />
+>psycopg2<br />
+>postgresql<br />
+>mongodb<br />
+>flask-wtf-forms<br />
+>bootstrap<br />
+
+
 
 ## Created By
 - [Amit Srivastava](https://github.com/cynicphoenix)
