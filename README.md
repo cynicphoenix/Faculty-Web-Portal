@@ -90,10 +90,11 @@ he/she can only read it.
 ## Video
 
 ##### About Page
+<br />
 [![IMAGE ALT TEXT HERE](https://raw.githubusercontent.com/cynicphoenix/Faculty-Web-Portal/master/Screenshots/login.png)](https://youtu.be/PyCvl-pdDp0)
-
+<br /><br />
 [![IMAGE ALT TEXT HERE](https://raw.githubusercontent.com/cynicphoenix/Faculty-Web-Portal/master/Screenshots/admin.png)](https://youtu.be/PyCvl-pdDp0)
-
+<br /><br />
 [![IMAGE ALT TEXT HERE](https://raw.githubusercontent.com/cynicphoenix/Faculty-Web-Portal/master/Screenshots/i%20want%20leave.png)](https://youtu.be/PyCvl-pdDp0)
 
 
