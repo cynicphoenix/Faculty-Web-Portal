@@ -86,3 +86,17 @@ he/she can only read it.
 
 ## ER Diagram 
 ![Alt Text](https://raw.githubusercontent.com/cynicphoenix/Faculty-Web-Portal/master/ER%20Diagram%20main.png)
+
+## Video
+
+##### About Page
+[![IMAGE ALT TEXT HERE](https://raw.githubusercontent.com/cynicphoenix/Faculty-Web-Portal/master/Screenshots/login.png)](https://youtu.be/PyCvl-pdDp0)
+
+[![IMAGE ALT TEXT HERE](https://raw.githubusercontent.com/cynicphoenix/Faculty-Web-Portal/master/Screenshots/admin.png)](https://youtu.be/PyCvl-pdDp0)
+
+[![IMAGE ALT TEXT HERE](https://raw.githubusercontent.com/cynicphoenix/Faculty-Web-Portal/master/Screenshots/i%20want%20leave.png)](https://youtu.be/PyCvl-pdDp0)
+
+
+## Created By
+- [Amit Srivastava](https://github.com/cynicphoenix)
+- [Aman Pandey](https://github.com/pandey2000)
